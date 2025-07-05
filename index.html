@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 24.2.3.2 (Windows)"/>
+	<meta name="created" content="2025-06-30T18:01:21.645000000"/>
+	<meta name="changed" content="2025-06-30T18:02:54.319000000"/>
+	<style type="text/css">
+		pre.cjk { font-family: "NSimSun", monospace }
+		code.cjk { font-family: "NSimSun", monospace }
+	</style>
+</head>
+<body lang="en-US" dir="ltr"><pre class="western" style="orphans: 2; widows: 2"><span style="display: inline-block; border: none; padding: 0in"><code class="western"><span style="font-variant: normal"><font color="#333333"><font size="2" style="font-size: 9pt"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">&lt;!DOCTYPE html&gt;</span></span></span></font></font></span></code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">&lt;html lang=&quot;en&quot;&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">&lt;head&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">    </code><code class="western">&lt;meta charset=&quot;UTF-8&quot;&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">    </code><code class="western">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">    </code><code class="western">&lt;title&gt;Texas Hold'em Practice Simulator&lt;/title&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">    </code><code class="western">&lt;style&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">:root {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">--primary: #006400;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">--secondary: #800000;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">--accent: #FFD700;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">--background: #1a1a1a;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">--text: #e0e0e0;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">* {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">margin: 0;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">padding: 0;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">box-sizing: border-box;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">font-family: 'Segoe UI', system-ui;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">body {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">background: var(--background);</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">color: var(--text);</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">min-height: 100vh;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">background-image: url('data:image/svg+xml;utf8,&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100&quot; height=&quot;100&quot; viewBox=&quot;0 0 100 100&quot;&gt;&lt;rect fill=&quot;none&quot; stroke=&quot;%23222&quot; stroke-width=&quot;0.5&quot; x=&quot;10&quot; y=&quot;10&quot; width=&quot;80&quot; height=&quot;80&quot;/&gt;&lt;/svg&gt;');</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">.container {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">max-width: 1200px;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">margin: 0 auto;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">padding: 2rem;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">nav {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">display: flex;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">gap: 1rem;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">margin-bottom: 2rem;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">nav button {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">background: var(--primary);</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">color: white;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">border: none;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">padding: 1rem 2rem;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">border-radius: 25px;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">cursor: pointer;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">transition: all 0.3s ease;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">nav button:hover {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">background: var(--secondary);</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">transform: translateY(-2px);</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">.card {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">background: #2d2d2d;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">border-radius: 10px;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">padding: 1.5rem;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">box-shadow: 0 4px 6px rgba(0,0,0,0.3);</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">.poker-table {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">background: #006400;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">border-radius: 50%;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">aspect-ratio: 1;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">width: 80vmin;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">margin: 2rem auto;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">position: relative;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">display: grid;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">place-items: center;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">.cards-container {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">display: flex;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">gap: 1rem;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">justify-content: center;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">margin: 1rem 0;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">.card {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">width: 80px;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">height: 120px;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">display: grid;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">place-items: center;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">font-size: 2rem;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">position: relative;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">.card::after {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">content: attr(data-suit);</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">font-size: 2.5rem;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">position: absolute;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">bottom: 10px;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">.controls {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">display: flex;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">gap: 1rem;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">justify-content: center;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">margin: 2rem 0;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">button {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">background: var(--secondary);</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">color: white;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">border: none;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">padding: 0.8rem 1.5rem;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">border-radius: 15px;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">cursor: pointer;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">transition: all 0.2s ease;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">button:hover {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">filter: brightness(1.2);</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">transform: scale(1.05);</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">.feedback {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">padding: 1rem;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">border-radius: 10px;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">text-align: center;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">margin: 1rem 0;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">display: none;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">.correct {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">background: rgba(0, 128, 0, 0.2);</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">color: #4CAF50;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">.incorrect {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">background: rgba(255, 0, 0, 0.2);</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">color: #F44336;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">.score-display {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">font-size: 1.5rem;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">text-align: center;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">margin: 2rem 0;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">.strategy-section {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">max-width: 800px;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">margin: 0 auto;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">.strategy-section h2 {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">color: var(--accent);</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">margin: 2rem 0 1rem;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">.strategy-section p {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">line-height: 1.6;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">margin-bottom: 1rem;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">@media (max-width: 768px) {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">.poker-table {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">width: 90vmin;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">}</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">nav {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">flex-direction: column;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">}</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">    </code><code class="western">&lt;/style&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">&lt;/head&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">&lt;body&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">    </code><code class="western">&lt;div class=&quot;container&quot;&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">&lt;h1 style=&quot;text-align: center; margin: 2rem 0; color: var(--accent);&quot;&gt;Texas Hold'em Practice Simulator&lt;/h1&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">&lt;nav&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">&lt;button onclick=&quot;showSection('game')&quot;&gt;Practice&lt;/button&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">&lt;button onclick=&quot;showSection('strategy')&quot;&gt;Strategy Guide&lt;/button&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">&lt;button onclick=&quot;showSection('score')&quot;&gt;Score&lt;/button&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">&lt;/nav&gt;</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">&lt;!-- Game Section --&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">&lt;section id=&quot;game-section&quot;&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">&lt;div class=&quot;poker-table&quot;&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">&lt;div class=&quot;cards-container&quot; id=&quot;community-cards&quot;&gt;&lt;/div&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">&lt;div class=&quot;cards-container&quot; id=&quot;player-hand&quot;&gt;&lt;/div&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">&lt;/div&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">&lt;div class=&quot;controls&quot;&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">&lt;button onclick=&quot;handleAction('fold')&quot;&gt;Fold&lt;/button&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">&lt;button onclick=&quot;handleAction('call')&quot;&gt;Call&lt;/button&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">&lt;button onclick=&quot;handleAction('raise')&quot;&gt;Raise&lt;/button&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">&lt;/div&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">&lt;div id=&quot;feedback&quot; class=&quot;feedback&quot;&gt;&lt;/div&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">&lt;div class=&quot;score-display&quot;&gt;Current Score: &lt;span id=&quot;score&quot;&gt;100&lt;/span&gt;%&lt;/div&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">&lt;/section&gt;</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">&lt;!-- Strategy Section --&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">&lt;section id=&quot;strategy-section&quot; style=&quot;display: none;&quot;&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">&lt;div class=&quot;strategy-section card&quot;&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">&lt;h2&gt;Optimal Texas Hold'em Strategy Basics&lt;/h2&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">&lt;p&gt;1. &lt;strong&gt;Position is Power:&lt;/strong&gt; Play tighter from early positions and looser from late positions.&lt;/p&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">&lt;p&gt;2. &lt;strong&gt;Hand Selection:&lt;/strong&gt; Premium hands (AA, KK, QQ, AK) should be raised pre-flop.&lt;/p&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">&lt;p&gt;3. &lt;strong&gt;Pot Odds:&lt;/strong&gt; Make sure the pot odds justify your draw.&lt;/p&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">&lt;p&gt;4. &lt;strong&gt;Bluffing:&lt;/strong&gt; Bluff when there's a reasonable chance opponents will fold.&lt;/p&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">&lt;p&gt;5. &lt;strong&gt;Board Texture:&lt;/strong&gt; Consider possible straights, flushes, and pairing on the board.&lt;/p&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">&lt;p&gt;6. &lt;strong&gt;Bankroll Management:&lt;/strong&gt; Never risk more than 5% of your bankroll in a single game.&lt;/p&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">&lt;p&gt;7. &lt;strong&gt;Table Image:&lt;/strong&gt; Adjust your play based on how opponents perceive you.&lt;/p&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">&lt;p&gt;8. &lt;strong&gt;Limit Tells:&lt;/strong&gt; Maintain consistent behavior regardless of hand strength.&lt;/p&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">&lt;/div&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">&lt;/section&gt;</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">&lt;!-- Score Section --&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">&lt;section id=&quot;score-section&quot; style=&quot;display: none;&quot;&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">&lt;div class=&quot;card&quot; style=&quot;text-align: center;&quot;&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">&lt;h2&gt;Your Performance&lt;/h2&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">&lt;div class=&quot;score-display&quot; style=&quot;font-size: 3rem; margin: 2rem 0;&quot;&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                    </code><code class="western">&lt;span id=&quot;final-score&quot;&gt;100&lt;/span&gt;%</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">&lt;/div&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">&lt;button onclick=&quot;resetScore()&quot; style=&quot;background: #F44336;&quot;&gt;Reset Score&lt;/button&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">&lt;/div&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">&lt;/section&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">    </code><code class="western">&lt;/div&gt;</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">    </code><code class="western">&lt;script&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">const scenarios = [</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">{</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">id: 1,</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">community: ['K♠', 'K♥', 'K♣'],</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">hand: ['A♠', 'A♦'],</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">optimal: 'raise'</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">},</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">{</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">id: 2,</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">community: ['Q♣', 'J♣', 'T♣'],</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">hand: ['9♣', '8♣'],</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">optimal: 'call'</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">},</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">{</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">id: 3,</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">community: ['A♦', 'K♦', 'Q♦'],</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">hand: ['J♦', 'T♦'],</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">optimal: 'raise'</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">}</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">];</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">let currentScenario = 0;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">let score = 100;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">let totalPlays = 0;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">let correctPlays = 0;</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">function showSection(section) {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">['game-section', 'strategy-section', 'score-section'].forEach(s =&gt; {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">document.getElementById(s).style.display = 'none';</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">});</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">document.getElementById(`${section}-section`).style.display = 'block';</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">if(section === 'score') updateScoreDisplay();</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">function updateScoreDisplay() {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">const percentage = totalPlays ? Math.round((correctPlays / totalPlays) * 100) : 100;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">document.getElementById('final-score').textContent = percentage;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">document.getElementById('score').textContent = percentage;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">function loadScenario() {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">const scenario = scenarios[currentScenario];</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">// Update community cards</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">const commCards = document.getElementById('community-cards');</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">commCards.innerHTML = scenario.community.map(card =&gt; </code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">`&lt;div class=&quot;card&quot; data-suit=&quot;${card.slice(1)}&quot;&gt;${card[0]}&lt;/div&gt;`</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">).join('');</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">// Update player hand</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">const playerHand = document.getElementById('player-hand');</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">playerHand.innerHTML = scenario.hand.map(card =&gt; </code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">`&lt;div class=&quot;card&quot; data-suit=&quot;${card.slice(1)}&quot;&gt;${card[0]}&lt;/div&gt;`</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">).join('');</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">// Clear feedback</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">document.getElementById('feedback').style.display = 'none';</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">function handleAction(action) {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">const scenario = scenarios[currentScenario];</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">totalPlays++;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">if(action === scenario.optimal) {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">correctPlays++;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">showFeedback('correct', `Correct! Optimal play is ${scenario.optimal.toUpperCase()} because...`);</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">} else {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">score = Math.max(0, score - Math.floor(100/scenarios.length));</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">showFeedback('incorrect', `Wrong! Optimal play is ${scenario.optimal.toUpperCase()}. ${getExplanation(scenario.id)}`);</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">}</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">updateScoreDisplay();</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">currentScenario = (currentScenario + 1) % scenarios.length;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">setTimeout(loadScenario, 2000);</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">function showFeedback(type, message) {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">const feedback = document.getElementById('feedback');</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">feedback.className = `feedback ${type}`;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">feedback.textContent = message;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">feedback.style.display = 'block';</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">function getExplanation(id) {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">const explanations = {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">1: &quot;You have pocket Aces against three Kings - you're way ahead!&quot;,</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">2: &quot;You've flopped a straight flush draw - great pot odds to continue&quot;,</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">                </code><code class="western">3: &quot;You've made the nut straight with Broadway&quot;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">};</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">return explanations[id] || &quot;General optimal play strategy&quot;;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">function resetScore() {</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">score = 100;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">totalPlays = 0;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">correctPlays = 0;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">            </code><code class="western">updateScoreDisplay();</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">}</code></span>
+
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">// Initial load</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">        </code><code class="western">loadScenario();</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">    </code><code class="western">&lt;/script&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">&lt;/body&gt;</code></span>
+<span style="display: inline-block; border: none; padding: 0in"><code class="western">&lt;/html&gt;</code></span></pre><p style="orphans: 2; widows: 2">
+<br/>
+<br/>
+
+</p>
+<p style="orphans: 2; widows: 2"><br/>
+<br/>
+
+</p>
+</body>
+</html>
